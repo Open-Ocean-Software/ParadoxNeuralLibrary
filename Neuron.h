@@ -10,13 +10,11 @@ namespace Paradox::Neural
         Neuron (Neuron clone);
 
         uint Id;
-        
-        bool Initialize ();
-        bool Initialize (Neuron axons[], Neuron dendrites[]);
-        bool Initialize (Neuron axons[], Neuron dendrites[], double weights[]);
 
+        Neuron Initialize ();
+        Neuron Initialize (double weights[]);
 
-        void SetTransitionFunction (double (*TransitionFunction)(double));
+        Neuron SetTransitionFunction (double (*TransitionFunction)(double));
 
         Neuron ForwardPropagate ();
         Neuron BackwardPropagate (double learningRate);
