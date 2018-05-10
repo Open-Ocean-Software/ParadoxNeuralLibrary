@@ -1,7 +1,7 @@
 #ifndef INPUTNEURON_H
 #define INPUTNEURON_H
 
-#import "Neuron.h"
+#include "../Neuron.h"
 
 namespace Paradox::Neural
 {
@@ -12,7 +12,7 @@ namespace Paradox::Neural
         InputNeuron Initialize (double weights[], double value);
 
         InputNeuron SetConnections (Neuron outputs[]);
-        
+
     private:
         double value;
     };

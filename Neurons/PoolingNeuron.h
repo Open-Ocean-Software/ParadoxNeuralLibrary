@@ -1,8 +1,8 @@
 #ifndef POOLINGNEURON_H
 #define POOLINGNEURON_H
 
-#import "Neuron.h"
-#import "PoolingParameters.h"
+#include "../Neuron.h"
+#include "Parameters/PoolingParameters.h"
 
 namespace Paradox::Neural
 {

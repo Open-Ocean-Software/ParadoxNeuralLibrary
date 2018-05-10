@@ -1,8 +1,8 @@
 #ifndef CONVNEURON_H
 #define CONVNEURON_H
 
-#import "Neuron.h"
-#import "ConvolutionalParameters.h"
+#include "../Neuron.h"
+#include "Parameters/ConvolutionalParameters.h"
 
 namespace Paradox::Neural
 {

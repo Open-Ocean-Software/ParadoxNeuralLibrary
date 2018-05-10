@@ -1,7 +1,7 @@
 #ifndef OUTPUTNEURON_H
 #define OUTPUTNEURON_H
 
-#import "Neuron.h"
+#include "../Neuron.h"
 
 namespace Paradox::Neural
 {

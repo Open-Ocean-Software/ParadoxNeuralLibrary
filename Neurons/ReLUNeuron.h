@@ -1,8 +1,8 @@
 #ifndef RELUNEURON_H
 #define RELUNEURON_H
 
-#import "Neuron.h"
-#import "ReLUParameters.h"
+#include "../Neuron.h"
+#include "Parameters/ReLUParameters.h"
 
 namespace Paradox::Neural
 {

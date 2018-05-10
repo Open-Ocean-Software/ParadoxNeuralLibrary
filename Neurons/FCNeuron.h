@@ -1,7 +1,7 @@
 #ifndef FCNEURON_H
 #define FCNEURON_H
 
-#import "Neuron.h"
+#include "../Neuron.h"
 
 namespace Paradox::Neural
 {
