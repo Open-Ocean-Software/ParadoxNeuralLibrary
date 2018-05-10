@@ -1,14 +1,15 @@
 #ifndef TRANSITIONFUNCTION_H
 #define TRANSITIONFUNCTION_H
 
-#import <math.h>
+#include <math.h>
 
 namespace Paradox::Neural
 {
     class TransitionFunction
     {
     public:
-        static double Sigmoid(double);
+        static double Sigmoid (double x);
+        static double SigmoidPrime (double x);
     };
 }
 

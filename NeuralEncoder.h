@@ -1,7 +1,7 @@
 #ifndef NEURALENCODER_H
 #define NEURALENCODER_H
 
-#import "InputNeuron.h"
+#include "InputNeuron.h"
 
 namespace Paradox::Neural
 {
