@@ -9,25 +9,25 @@ namespace Paradox::Neural
         Neuron (uint id);
         Neuron (Neuron clone);
 
-        uint Id;
-
         Neuron Initialize ();
         Neuron Initialize (double weights[]);
 
-        Neuron SetTransitionFunction (double (*TransitionFunction)(double), double (*TransitionDerivative)(double));
+        Neuron SetTransitionFunction (double (*transitionFunction)(double), double (*transitionDerivative)(double));
 
         Neuron ForwardPropagate ();
         Neuron BackwardPropagate (double learningRate);
 
     private:
-        double (*TransitionFunction) (double);
-        double (*TransitionDerivative) (double);
+        uint id;
 
-        Neuron Axons[];
-        Neuron Dendrites[];
-        double Weights[];
+        double (*transitionFunction) (double);
+        double (*transitionDerivative) (double);
 
-        double Error;
+        Layer input;
+        Layer output;
+        double weights[];
+
+        double error;
 
         bool isInitialized;
     };

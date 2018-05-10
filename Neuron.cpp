@@ -1,27 +1,24 @@
-//Neuron:
-//  Id: uint
-//  LayerIndex: uint
-//  Axons: array():Neuron
-//  Dendrites: array():Neuron
-//  Weights: array():double
-//  Error: double
+#include "Neuron.h"
 
-//InputNeuron (inherits Neuron):
-//  Input: array():double
+using namespace Paradox::Neural;
 
-//OutputNeuron (inherits Neuron):
-//  Output: double
-//  Target: double
-//  LossFunction: double:Reference(double)
+Neuron::Neuron (uint id) {
+    this->Id = id;
+    this->Error = 0;
+    this->isInitialized = false;
+}
+Neuron::Neuron (Neuron clone) {
+    this->id = clone.id;
+    this->*transitionFunction = clone.*transitionFunction;
+    this->*transitionDerivative = clone.*transitionDerivative;
+    this->input = clone.input;
+    this->output = clone.output;
+    this->weights = clone.weights;
+    this->error = clone.error;
+    this->isInitialized = clone.isInitialized;
+}
 
-//ConvNeuron (inherits Neuron):
-//  Stride: uint
-//  Depth: uint
-//  Padding: uint
-//  InputLength: uint
-
-
-//ReluNeuron (inherits Neuron)
-
-//PoolingNeuron (inherits Neuron):
-//
+Neuron::Initialize () {
+    
+    this->isInitialized = true;
+}

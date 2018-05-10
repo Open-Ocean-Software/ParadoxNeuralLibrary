@@ -11,7 +11,7 @@ namespace Paradox::Neural
         InputNeuron Initialize (double value);
         InputNeuron Initialize (double weights[], double value);
 
-        InputNeuron SetConnections (Neuron outputs[]);
+        InputNeuron SetConnections (Layer output);
 
     private:
         double value;

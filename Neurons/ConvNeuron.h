@@ -2,6 +2,7 @@
 #define CONVNEURON_H
 
 #include "../Neuron.h"
+#include "../Layer.h"
 #include "Parameters/ConvolutionalParameters.h"
 
 namespace Paradox::Neural
@@ -11,7 +12,7 @@ namespace Paradox::Neural
     public:
         ConvNeuron SetParameters (ConvolutionalParameters params);
 
-        ConvNeuron SetConnections (Neuron inputs[], Neuron outputs[]);
+        ConvNeuron SetConnections (Layer input, Layer output);
 
     private:
         ConvolutionalParameters params;

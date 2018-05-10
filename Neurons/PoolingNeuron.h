@@ -11,7 +11,7 @@ namespace Paradox::Neural
     public:
         PoolingNeuron SetParameters (Poolingparameters params);
 
-        PoolingNeuron SetConnections (Neuron inputs[], Neuron outputs[]);
+        PoolingNeuron SetConnections (Layer input, Layer output);
 
     private:
         PoolingParameters params;

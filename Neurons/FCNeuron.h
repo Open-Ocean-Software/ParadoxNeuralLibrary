@@ -8,7 +8,7 @@ namespace Paradox::Neural
     class FCNeuron : public Neuron
     {
     public:
-        FCNeuron SetConnections (Neuron inputs[], Neuron outputs[]);
+        FCNeuron SetConnections (Layer input, Layer output);
     };
 }
 

@@ -11,7 +11,7 @@ namespace Paradox::Neural
     public:
         ReLUNeuron SetParameters (ReLUParameters params);
 
-        ReLUNeuron SetConnections (Neuron inputs[], Neuron outputs[]);
+        ReLUNeuron SetConnections (Layer input, Layer output);
 
     private:
         ReLUParameters params;
