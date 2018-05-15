@@ -1,13 +1,16 @@
 #ifndef NEURON_H
 #define NEURON_H
 
+#include "Layer.h"
+#include "TransitionFunction.h"
+
 namespace Paradox::Neural
 {
     class Neuron
     {
     public:
-        Neuron (uint id);
-        Neuron (Neuron clone);
+        Neuron (unsigned int id);
+        Neuron (const Neuron &clone);
 
         Neuron Initialize ();
         Neuron Initialize (double weights[]);
@@ -18,14 +21,14 @@ namespace Paradox::Neural
         Neuron BackwardPropagate (double learningRate);
 
     private:
-        uint id;
+        unsigned int id;
 
-        double (*transitionFunction) (double);
-        double (*transitionDerivative) (double);
+        double (*function) (double);
+        double (*derivative) (double);
 
         Layer input;
         Layer output;
-        double weights[];
+        double *weights;
 
         double error;
 

@@ -10,6 +10,7 @@ namespace Paradox::Neural
     public:
         static double Sigmoid (double x);
         static double SigmoidPrime (double x);
+        static double SigmoidWeightGeneration (unsigned int fanIn, unsigned int fanOut);
     };
 }
 
