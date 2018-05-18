@@ -3,10 +3,6 @@
 ###	Author: Nicholas Hein
 ###
 
-#
-#	CONSTANTS
-#
-
 PROJECTNAME := ParadoxNeuralLibrary
 CC := g++
 MAINNAME := main
@@ -16,10 +12,6 @@ BUILDDIR := build
 BUILDTESTDIR := buildtest
 BINDIR := bin
 TARGET := $(BINDIR)/$(PROJECTNAME)
-
-#
-#	COMPILING/LINKING
-#
 
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
@@ -39,18 +31,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
 	@echo "   $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
-#
-#	METHODS
-#
-
-# Targets
-clean:
-	@echo " Cleaning..."
-	@echo "   $(RM) -r $(BUILDDIR)/* $(BINDIR)/* $(BUILDTESTDIR)/*"; $(RM) -r $(BUILDDIR)/* $(BINDIR)/* $(BUILDTESTDIR)/*
-
-
-# Tests
-define EACH_SOURCE
+define EACH_TEST
 	$(eval obj = $(patsubst $(TESTDIR)/%,$(BUILDTESTDIR)/%,$(1:.$(SRCEXT)=.o)))
 	echo " Building: '$(obj)' from '$(1)'...";
 	echo "   $(CC) $(CFLAGS) $(INC) -c -o $(obj) $(1)"; $(CC) $(CFLAGS) $(INC) -c -o $(obj) $(1)
@@ -59,12 +40,31 @@ define EACH_SOURCE
 	@echo "   $(CC) $(obj) $(SAFEOBJECTS) -o $(progname) $(LIB)"; $(CC) $(obj) $(SAFEOBJECTS) -o $(progname) $(LIB)
 endef
 
+define EACH_SOURCE
+	$(eval obj = $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(1:.$(SRCEXT)=.o)))
+	echo " Building: '$(obj)' from '$(1)'...";
+	echo "   $(CC) $(CFLAGS) $(INC) -c -o $(obj) $(1)"; $(CC) $(CFLAGS) $(INC) -c -o $(obj) $(1)
+endef
+
+all:
+	@echo " Compiling...";
+	@mkdir -p $(BUILDDIR)
+	@$(foreach src,$(SOURCES),$(call EACH_SOURCE,$(src)))
+	@echo " Linking...";
+	@echo "   $(CC) $(OBJECTS) -o $(TARGET) $(LIB)"; $(CC) $(OBJECTS) -o $(TARGET) $(LIB)
+
+clean:
+	@echo " Cleaning..."
+	@echo "   $(RM) -r $(BUILDDIR)/* $(BINDIR)/* $(BUILDTESTDIR)/*"; $(RM) -r $(BUILDDIR)/* $(BINDIR)/* $(BUILDTESTDIR)/*
+
+
 test:
 	@echo " Compiling tests...";
 	@mkdir -p $(BUILDTESTDIR)
-	@$(foreach src,$(TESTSOURCES),$(call EACH_SOURCE,$(src)))
+	@$(foreach src,$(TESTSOURCES),$(call EACH_TEST,$(src)))
 
 
 
 .PHONY: clean
 .PHONY: test
+.PHONY: all
